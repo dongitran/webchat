@@ -28,6 +28,8 @@ words:
   - upsert
   - supertest
   - dmkey
+  - nosniff
+  - SAMEORIGIN
 ignorePaths:
   - node_modules
   - dist
