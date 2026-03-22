@@ -1,0 +1,36 @@
+version: "0.2"
+language: en
+words:
+  - webchat
+  - zustand
+  - tanstack
+  - shiki
+  - pino
+  - lucide
+  - glassmorphism
+  - oklch
+  - ioredis
+  - tseslint
+  - vitest
+  - commitlint
+  - cspell
+  - hookform
+  - radix
+  - framer
+  - vite
+  - vitejs
+  - unshift
+  - nocheck
+  - noEmit
+  - sonarjs
+  - preconfigured
+  - middlewares
+  - upsert
+  - supertest
+  - dmkey
+ignorePaths:
+  - node_modules
+  - dist
+  - coverage
+  - pnpm-lock.yaml
+  - "**/*.json"

@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist-node",
+    "rootDir": ".",
+    "moduleDetection": "force"
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "eslint.config.ts"]
+}

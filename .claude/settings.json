@@ -12,9 +12,6 @@
       "WebSearch(*)",
       "WebFetch(*)"
     ],
-    "deny": [
-      "Bash(rm *)",
-      "Bash(rm -*)"
-    ]
+    "deny": []
   }
 }
