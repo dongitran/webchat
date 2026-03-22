@@ -5,6 +5,8 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default tseslint.config(
   ...rootConfig,
+  // Ignore auto-generated files
+  { ignores: ["src/routeTree.gen.ts"] },
   {
     languageOptions: {
       parserOptions: {
@@ -23,6 +25,10 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
+      // React components conventionally use PascalCase filenames
+      "unicorn/filename-case": ["error", { cases: { kebabCase: true, pascalCase: true } }],
+      // Readonly props add noise in simple components — disable globally in web
+      "sonarjs/prefer-read-only-props": "off",
     },
   },
 );

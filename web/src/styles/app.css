@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ─── Google Fonts ──────────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+@theme {
+  /* Base palette */
+  --color-bg-base: #0d0d10;
+  --color-bg-elevated: #141418;
+  --color-bg-surface: #1c1c23;
+  --color-bg-overlay: #222229;
+  --color-bg-hover: #2a2a34;
+
+  /* Brand */
+  --color-brand: #7c6aff;
+  --color-brand-muted: #4f3fcf;
+  --color-brand-glow: rgb(124 106 255 / 0.35);
+
+  /* Text */
+  --color-text-primary: #f0f0f8;
+  --color-text-secondary: #9191a8;
+  --color-text-muted: #5c5c74;
+  --color-text-inverse: #0d0d10;
+
+  /* Borders */
+  --color-border-subtle: #24242e;
+  --color-border-default: #2e2e3d;
+  --color-border-emphasis: #3e3e54;
+
+  /* Status */
+  --color-online: #22c55e;
+  --color-idle: #f59e0b;
+  --color-dnd: #ef4444;
+  --color-offline: #52525b;
+
+  /* Danger / Warning */
+  --color-danger: #ef4444;
+  --color-danger-muted: #7f1d1d;
+
+  /* Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 8px 32px rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 0 24px var(--color-brand-glow);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base styles ───────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Custom scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-emphasis);
+}
+
+/* ─── Custom utilities ──────────────────────────────────────────────────────── */
+@utility glass {
+  background: rgb(28 28 35 / 0.7);
+  backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid var(--color-border-subtle);
+}
+
+@utility glass-strong {
+  background: rgb(20 20 24 / 0.85);
+  backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid var(--color-border-default);
+}
+
+@utility glow-brand {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility gradient-mesh {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgb(124 106 255 / 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgb(99 179 237 / 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 70% at 50% 50%, rgb(244 114 182 / 0.04) 0%, transparent 70%);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-brand) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility focus-ring {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background: rgb(124 106 255 / 0.35);
+  color: var(--color-text-primary);
+}
