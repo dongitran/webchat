@@ -16,14 +16,26 @@ vi.mock("../../lib/logger.js", async () => {
   return { logger: pino.default({ level: "silent" }) };
 });
 
-vi.mock("mongoose", () => ({
-  default: { connection: { readyState: 1 } },
-}));
+vi.mock("mongoose", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("mongoose")>();
+  return {
+    ...actual,
+    default: {
+      ...actual.default,
+      connection: { readyState: 1 },
+    },
+  };
+});
 
 vi.mock("../../config/redis.js", () => ({
   redis: { status: "ready" },
   connectRedis: vi.fn(),
   disconnectRedis: vi.fn(),
+}));
+
+// Prevent passport-google-oauth20 from requiring real OAuth credentials in tests
+vi.mock("../../config/passport.js", () => ({
+  passport: { authenticate: vi.fn(), use: vi.fn() },
 }));
 
 import supertest from "supertest";

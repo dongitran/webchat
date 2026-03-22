@@ -30,6 +30,7 @@ words:
   - dmkey
   - nosniff
   - SAMEORIGIN
+  - maxlength
 ignorePaths:
   - node_modules
   - dist

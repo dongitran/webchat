@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import pinoHttp from "pino-http";
 import { env } from "./config/env.js";
 import { logger } from "./lib/logger.js";
@@ -42,22 +43,25 @@ export function createApp(): express.Express {
   // 3. Rate limiter
   app.use(globalLimiter);
 
-  // 4. Body parser
+  // 4. Cookie parser (must be before routes that read cookies)
+  app.use(cookieParser());
+
+  // 5. Body parser
   app.use(express.json({ limit: "1mb" }));
 
-  // 5. Request ID
+  // 6. Request ID
   app.use(requestIdMiddleware);
 
-  // 6. Request logging
+  // 7. Request logging
   app.use(pinoHttp({ logger }));
 
-  // 7. Routes
+  // 8. Routes
   app.use("/api/v1", apiRoutes);
 
-  // 8. 404 handler
+  // 9. 404 handler
   app.use(notFoundMiddleware);
 
-  // 9. Global error handler
+  // 10. Global error handler
   app.use(errorHandlerMiddleware);
 
   return app;
