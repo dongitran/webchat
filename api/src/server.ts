@@ -4,9 +4,13 @@ import { logger } from "./lib/logger.js";
 import { connectDatabase, disconnectDatabase } from "./config/database.js";
 import { connectRedis, disconnectRedis } from "./config/redis.js";
 import { createApp } from "./app.js";
+import { createSocketServer } from "./config/socket.js";
+import { initializeSocket } from "./socket/index.js";
 
 const app = createApp();
 const server = createServer(app);
+const io = createSocketServer(server);
+initializeSocket(io);
 
 async function start(): Promise<void> {
   await connectDatabase();

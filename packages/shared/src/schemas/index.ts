@@ -1,3 +1,23 @@
-// Placeholder — Zod validation schemas will be added in Phase 1
-// Re-exported from here so consumers can import from @webchat/shared/schemas
-export const SCHEMA_VERSION = 1;
+export {
+  CreateConversationSchema,
+  UpdateConversationSchema,
+  ListConversationsQuerySchema,
+  ConversationParamsSchema,
+} from "./conversation.schema.js";
+
+export {
+  SendMessageSchema,
+  EditMessageSchema,
+  AddReactionSchema,
+  ListMessagesQuerySchema,
+  MessageParamsSchema,
+  MessageReactionParamsSchema,
+  ConversationMessageParamsSchema,
+} from "./message.schema.js";
+
+export {
+  UpdateStatusSchema,
+  UpdateProfileSchema,
+  SearchUsersQuerySchema,
+  UserParamsSchema,
+} from "./user.schema.js";

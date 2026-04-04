@@ -32,6 +32,9 @@ words:
   - SAMEORIGIN
   - maxlength
   - unstub
+  - Subdoc
+  - subdoc
+  - conv
 ignorePaths:
   - node_modules
   - dist
